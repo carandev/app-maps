@@ -1,9 +1,6 @@
 import { useState } from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
-import InputPointName from './src/components/InputPointName';
-import MyMap from './src/components/MyMap';
-import MyModal from './src/components/MyModal';
-import Panel from './src/components/Panel';
+import { MyMap, InputPointName, MyModal, Panel } from './src/components';
 
 export default function App() {
   const [points, setPoints] = useState([])

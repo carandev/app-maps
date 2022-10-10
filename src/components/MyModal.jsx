@@ -1,7 +1,7 @@
 import { StyleSheet, Modal, Text, View } from 'react-native'
 import React from 'react'
 
-const MyModal = ({ children, visibility}) => {
+export const MyModal = ({ children, visibility}) => {
   return (
       <Modal
         animationType='slide'
@@ -16,8 +16,6 @@ const MyModal = ({ children, visibility}) => {
       </Modal>
   )
 }
-
-export default MyModal
 
 const styles = StyleSheet.create({
   center: {

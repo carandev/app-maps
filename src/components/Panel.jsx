@@ -1,7 +1,7 @@
 import { Button, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const Panel = ({ onPressLeft, textLeft }) => {
+export const Panel = ({ onPressLeft, textLeft }) => {
   return (
     <View style={styles.panel}>
       <Button onPress={onPressLeft} title={textLeft} />
@@ -9,8 +9,6 @@ const Panel = ({ onPressLeft, textLeft }) => {
     </View>
   )
 }
-
-export default Panel
 
 const styles = StyleSheet.create({
     panel: {
