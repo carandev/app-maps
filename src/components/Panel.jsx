@@ -1,4 +1,4 @@
-import { Button, StyleSheet, View } from 'react-native'
+import { Button, Dimensions, StyleSheet, View } from 'react-native'
 import React from 'react'
 
 export const Panel = ({ onPressLeft, textLeft, togglePointsFilter }) => {
@@ -15,7 +15,8 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     backgroundColor: '#eee',
-    justifyContent: 'center',
-    alignItems: 'center'
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    width: Dimensions.get('window').width
   }
 })

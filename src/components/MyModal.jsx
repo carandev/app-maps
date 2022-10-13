@@ -20,6 +20,9 @@ const styles = StyleSheet.create({
   },
   modalView: {
     minWidth: Dimensions.get('window').width - 100,
+    minHeight: 200,
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: '#fff',
     borderRadius: 4,
     padding: 20,

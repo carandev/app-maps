@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { StyleSheet, View, Button } from 'react-native'
+import { StyleSheet, View, Button, Dimensions } from 'react-native'
 
 import { MyMap, InputPointName, MyModal, Panel, List } from './src/components'
 
@@ -21,9 +21,12 @@ export default function App () {
   }
 
   const handleSubmit = () => {
-    const newPoint = { coordinate: temporalPoint, name: pointName }
+    if (pointName.trim() !== '') {
+      const newPoint = { coordinate: temporalPoint, name: pointName }
 
-    setPoints((lastPoints) => lastPoints.concat(newPoint))
+      setPoints((lastPoints) => lastPoints.concat(newPoint))
+    }
+
     setVisibility(false)
     setPointName('')
   }
@@ -49,12 +52,12 @@ export default function App () {
       <MyModal visibility={visibility}>
         {visibilityFilter === 'new_points'
           ? <View style={styles.form}>
-            <InputPointName
-              placeholder="Nombre del punto"
-              title="Nombre"
-              onChangeText={handleChangeText}
-            />
-            <Button title="Aceptar" onPress={handleSubmit} />
+              <InputPointName
+                placeholder="Nombre del punto"
+                title="Nombre"
+                onChangeText={handleChangeText}
+              />
+              <Button title="Aceptar" onPress={handleSubmit} />
           </View>
 
           : <List closeModal={handleCloseModal} points={points} />
@@ -66,7 +69,8 @@ export default function App () {
 
 const styles = StyleSheet.create({
   form: {
-    padding: 15
+    padding: 15,
+    minWidth: Dimensions.get('window').width - 100
   },
   container: {
     flex: 1,
