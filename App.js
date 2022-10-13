@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { StyleSheet, View, Text, Button } from 'react-native';
-import { MyMap, InputPointName, MyModal, Panel } from './src/components';
+import { MyMap, InputPointName, MyModal, Panel, List } from './src/components';
 
 export default function App() {
   const [points, setPoints] = useState([])
@@ -39,7 +39,7 @@ export default function App() {
         {
           visibilityFilter === 'new_points'
           ? 
-          <>
+          <View style={styles.form}>
             <InputPointName 
             title='Nombre'
             placeholder='Nombre del punto'
@@ -49,8 +49,8 @@ export default function App() {
               title='Aceptar'
               onPress={handleSubmit}
             />
-          </>
-          : <Text>Hola</Text>
+          </View>
+          : <List points={points} closeModal={() => setVisibility(false)} />
         }
         
       </MyModal>
@@ -59,6 +59,9 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
+  form: {
+    padding: 15,
+  },
   container: {
     flex: 1,
     backgroundColor: '#fff',
