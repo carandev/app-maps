@@ -1,21 +1,21 @@
-import { Button, StyleSheet, Text, View } from "react-native";
-import React from "react";
+import { Button, StyleSheet, View } from 'react-native'
+import React from 'react'
 
-export const Panel = ({ onPressLeft, textLeft }) => {
+export const Panel = ({ onPressLeft, textLeft, togglePointsFilter }) => {
   return (
     <View style={styles.panel}>
-      <Button onPress={onPressLeft} title={textLeft} />
-      <Button title="Mostrar / Ocultar" />
+      <Button title={textLeft} onPress={onPressLeft} />
+      <Button title="Mostrar / Ocultar" onPress={togglePointsFilter} />
     </View>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   panel: {
     flex: 1,
-    flexDirection: "row",
-    backgroundColor: "#eee",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});
+    flexDirection: 'row',
+    backgroundColor: '#eee',
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+})

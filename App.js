@@ -7,6 +7,7 @@ export default function App () {
   const [points, setPoints] = useState([])
   const [pointName, setPointName] = useState('')
   const [visibility, setVisibility] = useState(false)
+  const [pointsFilter, setPointsFilter] = useState(true)
   const [temporalPoint, setTemporalPoint] = useState({})
   const [visibilityFilter, setVisibilityFilter] = useState('new_points')
 
@@ -32,14 +33,22 @@ export default function App () {
     setVisibility(true)
   }
 
+  const handleCloseModal = () => {
+    setVisibilityFilter('new_points')
+    setVisibility(false)
+  }
+
+  const togglePointsFilter = () => {
+    setPointsFilter(lastValue => !lastValue)
+  }
+
   return (
     <View style={styles.container}>
-      <MyMap handleLongPress={handleLongPress} />
-      <Panel textLeft="List" onPressLeft={handleList} />
+      <MyMap handleLongPress={handleLongPress} points={points} pointsFilter={pointsFilter} />
+      <Panel textLeft="List" togglePointsFilter={togglePointsFilter} onPressLeft={handleList} />
       <MyModal visibility={visibility}>
         {visibilityFilter === 'new_points'
-          ? (
-          <View style={styles.form}>
+          ? <View style={styles.form}>
             <InputPointName
               placeholder="Nombre del punto"
               title="Nombre"
@@ -47,10 +56,9 @@ export default function App () {
             />
             <Button title="Aceptar" onPress={handleSubmit} />
           </View>
-            )
-          : (
-          <List closeModal={() => setVisibility(false)} points={points} />
-            )}
+
+          : <List closeModal={handleCloseModal} points={points} />
+            }
       </MyModal>
     </View>
   )

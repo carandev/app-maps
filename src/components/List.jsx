@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     paddingBottom: 15
   },
   list: {
-    height: Dimensions.get('window').height
+    height: Dimensions.get('window').height - 250
   },
   item: {
     borderBottomWidth: 1,
