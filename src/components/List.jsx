@@ -4,9 +4,9 @@ import {
   FlatList,
   StyleSheet,
   Text,
-  View,
-} from "react-native";
-import React from "react";
+  View
+} from 'react-native'
+import React from 'react'
 
 export const List = ({ points, closeModal }) => {
   return (
@@ -14,29 +14,29 @@ export const List = ({ points, closeModal }) => {
       <View style={styles.list}>
         <FlatList
           data={points.map((point) => point.name)}
-          renderItem={({ item }) => <Text style={styles.item}>{item}</Text>}
           keyExtractor={(item) => item}
+          renderItem={({ item }) => <Text style={styles.item}>{item}</Text>}
         />
       </View>
       <View style={styles.button}>
         <Button title="Cerrar" onPress={closeModal} />
       </View>
     </>
-  );
-};
+  )
+}
 
 const styles = StyleSheet.create({
   button: {
-    paddingBottom: 15,
+    paddingBottom: 15
   },
   list: {
-    height: Dimensions.get("window").height,
+    height: Dimensions.get('window').height
   },
   item: {
     borderBottomWidth: 1,
-    borderColor: "#ccc",
+    borderColor: '#ccc',
     height: 50,
-    justifyContent: center,
-    padding: 15,
-  },
-});
+    justifyContent: 'center',
+    padding: 15
+  }
+})
