@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { StyleSheet, View, Button, Dimensions } from 'react-native'
+import { View } from 'react-native'
 
-import { MyMap, InputPointName, MyModal, Panel, List } from './src/components'
+import Home from './src/screen/Home'
+import appStyle from './src/styles/appStyle'
 
 export default function App () {
   const [points, setPoints] = useState([])
@@ -46,36 +47,19 @@ export default function App () {
   }
 
   return (
-    <View style={styles.container}>
-      <MyMap handleLongPress={handleLongPress} points={points} pointsFilter={pointsFilter} />
-      <Panel textLeft="List" togglePointsFilter={togglePointsFilter} onPressLeft={handleList} />
-      <MyModal visibility={visibility}>
-        {visibilityFilter === 'new_points'
-          ? <View style={styles.form}>
-              <InputPointName
-                placeholder="Nombre del punto"
-                title="Nombre"
-                onChangeText={handleChangeText}
-              />
-              <Button title="Aceptar" onPress={handleSubmit} />
-          </View>
-
-          : <List closeModal={handleCloseModal} points={points} />
-            }
-      </MyModal>
+    <View style={appStyle.container}>
+        <Home
+          handleChangeText={handleChangeText}
+          handleCloseModal={handleCloseModal}
+          handleList={handleList}
+          handleLongPress={handleLongPress}
+          handleSubmit={handleSubmit}
+          points={points}
+          pointsFilter={pointsFilter}
+          togglePointsFilter={togglePointsFilter}
+          visibility={visibility}
+          visibilityFilter={visibilityFilter}
+        />
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  form: {
-    padding: 15,
-    minWidth: Dimensions.get('window').width - 100
-  },
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-})
